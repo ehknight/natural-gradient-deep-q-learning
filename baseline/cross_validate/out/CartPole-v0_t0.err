@@ -1,0 +1,8 @@
+2018-01-28 12:50:15.471559: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+WARNING:tensorflow:From /home/ehk/anaconda2/envs/tf/lib/python3.6/site-packages/baselines-0.1.4-py3.6.egg/baselines/deepq/build_graph.py:366: arg_max (from tensorflow.python.ops.gen_math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `argmax` instead
+/home/ehk/anaconda2/envs/tf/lib/python3.6/site-packages/numpy/core/fromnumeric.py:2957: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/home/ehk/anaconda2/envs/tf/lib/python3.6/site-packages/numpy/core/_methods.py:80: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
