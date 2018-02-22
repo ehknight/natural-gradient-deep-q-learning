@@ -20,13 +20,13 @@ def main():
     model = deepq.models.mlp([64], activation_fn=tf.nn.tanh)
     act = deepq.learn(
         env,
-        lr=1e-06,
+        lr=1e-07,
         q_func=model,
         target_network_update_freq=1,
-        batch_size=32,
+        batch_size=128,
         max_timesteps=max_timesteps_env*2000,
-        buffer_size=500,
-        exploration_fraction=0.1,
+        buffer_size=2500,
+        exploration_fraction=0.01,
         exploration_final_eps=0.02,
         print_freq=10,
         callback=callback

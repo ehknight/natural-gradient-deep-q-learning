@@ -49,7 +49,7 @@ search_space = {
         'mem_len': [500, 2500, 50000],
         'exploration_frac': [0.01, 0.1, 0.5],
         'activation': ['tanh', 'relu'],
-        'lr': ['5e-2', '1e-4', '1e-5', '5e-3', '5e-5', 5e-6, 1e-6, 5e-4],
+        'lr': [1e-7, 1e-8, '5e-2', '1e-4', '1e-5', '5e-3', '5e-5', 5e-6, 1e-6, 5e-4],
         # lrs also include default baselines learning rate (5e-4) copied from earlier runs
         'env': layer_sizes.keys()
      }
@@ -65,7 +65,7 @@ def submit(param_str, param_set, *args):
     file.close()
     cmd = "sbatch "+RESULTS_DIR+param_str+".sbatch"
     print("Running command: {}".format(cmd))
-    os.system(cmd)
+    # os.system(cmd)
 
 def dict_product(dicts):
     return (dict(zip(dicts, x)) for x in product(*iter(dicts.values())))

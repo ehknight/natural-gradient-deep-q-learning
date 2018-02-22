@@ -18,7 +18,7 @@ def main():
     envs = ['CartPole-v0', 'CartPole-v1', 'Acrobot-v1', 'LunarLander-v2']
     all_avgs = {}
     for env in envs:
-        out_fnames = glob.glob('cross_validate/out/{}_t*.out'.format(env))
+        out_fnames = glob.glob('cross_validate/out/ng_{}_t*.out'.format(env))
         outs = [open(x).readlines() for x in out_fnames]
 
         if '.' in env: eps = episodes[env.split('.')[-1]]

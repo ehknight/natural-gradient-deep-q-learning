@@ -21,9 +21,10 @@ def file_len(fname):
 @click.command()
 @click.option('--write', default=False, help='Write best to cross_val/py')
 @click.option('--assertsame', default=False, help='Verify that cross_val/py matches best')
+@click.option('--warnsame', default=False, help='Verify that cross_val/py matches best')
 @click.option('--folder', default='param_search')
 @click.option('--crossvalidate', default=False)
-def main(write, folder, crossvalidate, assertsame):
+def main(write, folder, crossvalidate, assertsame, warnsame):
     envs = ['CartPole-v0', 'CartPole-v1', 'Acrobot-v1', 'LunarLander-v2']
     maxlens = [2000, 2000, 10000, 10000]
     for env, maxlen in zip(envs, maxlens):
@@ -39,8 +40,9 @@ def main(write, folder, crossvalidate, assertsame):
                 lines = open(out_file).readlines()
                 line = lines[-2] # baselines has a '^^^^' on the last line
                 avg = calc_avg(eval(line), maxlen)
-            except:
-                warn(out_file)
+            except Exception as e:
+                print 'Error: {}'.format(out_file)
+                warn(str(e))
                 continue
             py_file = '/'+re.findall(r"\/ng_({}.*)_t0\.out".format(env), out_file)[0]+".py"
             avgs.append(('/'.join(out_file.split('/')[:-1])+py_file, avg))
@@ -58,6 +60,10 @@ def main(write, folder, crossvalidate, assertsame):
             copyfile(best[0], os.path.join('cross_validate', 'py', env+'.py'))
         if assertsame:
             assert open(best[0]).read() == open(os.path.join('cross_validate', 'py', env+'.py')).read()
+        if warnsame:
+            if not open(best[0]).read() == open(os.path.join('cross_validate', 'py', env+'.py')).read():
+                warn("Best crossval does not match best gridsearched result")
+
 
 
 if __name__ == '__main__':

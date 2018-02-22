@@ -1,5 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=t6_Acrobot-v1
+#SBATCH --output=/scratch/PI/menon/scripts/python/misc/natgrad/ngdqn-final/baseline/cross_validate/out/ng_Acrobot-v1_t6.out
+#SBATCH --error=/scratch/PI/menon/scripts/python/misc/natgrad/ngdqn-final/baseline/cross_validate/out/ng_Acrobot-v1_t6.err
 #SBATCH --time=8:00:00
 #SBATCH --nodes=1
 #SBATCH --mem=1000
@@ -25,4 +27,4 @@ module load gcc/5.3.0
 module load intelmpi
 source activate tf
 
-srun python /scratch/PI/menon/scripts/python/misc/natgrad/natural-learning/baseline_search_tanh_and_relu_stnuf_1_multiple_lrs/cross_validate/py/Acrobot-v1.py
+stdbuf -i0 -o0 -e0 srun python /scratch/PI/menon/scripts/python/misc/natgrad/ngdqn-final/baseline/cross_validate/py/Acrobot-v1.py
