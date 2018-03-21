@@ -1,5 +1,7 @@
 # Natural Gradient Deep Q-Learning (NGDQN)
 
+Please find our paper on arXiv [here](https://arxiv.org/abs/1803.07482).
+
 This repository contains supplementary code for natural gradient Q-Learning. As of right now, the repository just contains the baseline code, which you can run yourself to replace the baseline results. 
 
 ## Baselines
